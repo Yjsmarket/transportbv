@@ -145,7 +145,9 @@ main, .footer { position: relative; z-index: 1; }
 
 .hero-title { font-size: clamp(2.8rem, 8vw, 6rem); line-height: .98; letter-spacing: -.02em; font-weight: 700; }
 .hero-title .line { display: block; overflow: hidden; }
-.hero-sub { max-width: 600px; margin: 26px 0 34px; color: #c8cdd3; font-size: clamp(1rem,1.4vw,1.18rem); }
+.hero-sub { max-width: 620px; margin: 26px 0 0; color: #d3d8dd; font-size: clamp(1rem,1.4vw,1.18rem); }
+.hero-sub--2 { color: var(--muted); font-size: clamp(.95rem,1.2vw,1.02rem); margin-top: 16px; margin-bottom: 34px; }
+.hero-actions { margin-top: 34px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
 .hero-stats { display: flex; flex-wrap: wrap; gap: clamp(24px,5vw,64px); margin-top: 56px; }
@@ -217,6 +219,20 @@ main, .footer { position: relative; z-index: 1; }
 .service-icon svg { width: 26px; height: 26px; }
 .service h3 { font-size: 1.28rem; margin-bottom: 10px; letter-spacing: -.01em; }
 .service p { color: var(--muted); font-size: .98rem; }
+
+/* featured service (Luchtvracht) */
+.service-feature {
+  background: linear-gradient(160deg, rgba(242,106,27,.16), rgba(28,32,38,.6));
+  border-color: rgba(242,106,27,.5);
+}
+.service-feature::before { width: 100%; }
+.service-feature .service-icon { background: var(--orange); color: #fff; border-color: transparent; }
+.service-feature .service-num { color: rgba(242,106,27,.35); }
+.service-flag {
+  display: inline-block; margin-bottom: 10px; padding: 4px 12px; border-radius: 999px;
+  background: var(--orange); color: #fff; font-family: 'Space Grotesk'; font-weight: 600;
+  font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+}
 
 .service-cta {
   background: linear-gradient(135deg, var(--orange), #c8520f);
