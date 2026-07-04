@@ -316,6 +316,78 @@ main, .footer { position: relative; z-index: 1; }
 .footer-links { display: flex; gap: 20px; }
 .footer-links a:hover { color: var(--orange); }
 
+/* ------------------------------------------------------------ SUBPAGES */
+/* active nav link */
+.nav-links a.active { color: var(--text); background: rgba(255,255,255,.06); }
+
+/* compact page hero */
+.page-hero {
+  position: relative; padding: 150px clamp(18px,4vw,48px) clamp(70px,9vw,120px);
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+}
+.page-hero-media { position: absolute; inset: 0; z-index: -1; }
+.page-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.page-hero-media::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(100deg, rgba(13,15,18,.95) 0%, rgba(13,15,18,.8) 45%, rgba(13,15,18,.55) 100%),
+    linear-gradient(0deg, rgba(13,15,18,.98) 3%, transparent 55%),
+    radial-gradient(700px 360px at 15% 70%, rgba(242,106,27,.26), transparent 70%);
+}
+.page-hero-inner { max-width: var(--maxw); margin: 0 auto; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .86rem; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--muted); transition: color .2s; }
+.breadcrumb a:hover { color: var(--orange); }
+.breadcrumb .sep { opacity: .5; }
+.breadcrumb .current { color: var(--orange); }
+.page-hero h1 { font-family: 'Space Grotesk'; font-size: clamp(2.4rem,6vw,4.2rem); line-height: 1.02; letter-spacing: -.02em; font-weight: 700; }
+.page-hero .lead { max-width: 640px; margin-top: 20px; color: #cdd2d8; font-size: clamp(1.02rem,1.4vw,1.2rem); }
+
+/* prose content block */
+.prose { max-width: 760px; }
+.prose p { color: var(--muted); font-size: 1.06rem; margin-bottom: 18px; }
+.prose p strong { color: var(--text); }
+.prose-lead { color: var(--text) !important; font-weight: 600; font-family: 'Space Grotesk'; margin: 26px 0 16px !important; font-size: 1.1rem !important; }
+
+/* two-column info layout: copy + list card */
+.info-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px,4vw,56px); align-items: start; }
+.info-copy .eyebrow { margin-bottom: 14px; }
+.info-copy h2 { font-family: 'Space Grotesk'; font-size: clamp(1.7rem,3.4vw,2.6rem); line-height: 1.08; letter-spacing: -.02em; font-weight: 700; margin-bottom: 20px; }
+.info-copy p { color: var(--muted); font-size: 1.04rem; margin-bottom: 16px; }
+.info-card { background: var(--ink-3); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px,3vw,34px); position: sticky; top: 100px; }
+.info-card h3 { font-size: 1.05rem; margin-bottom: 18px; color: var(--text); }
+.info-card .fleet-list { margin-bottom: 0; }
+
+/* audience chips */
+.chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.chip-list li {
+  padding: 10px 18px; border-radius: 999px; background: rgba(255,255,255,.04);
+  border: 1px solid var(--line); font-weight: 500; font-size: .96rem;
+  transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease);
+}
+.chip-list li:hover { border-color: rgba(242,106,27,.5); background: rgba(242,106,27,.1); transform: translateY(-2px); }
+.chip-list li.highlight { border-color: rgba(242,106,27,.4); background: rgba(242,106,27,.12); color: var(--text); }
+
+/* page CTA banner */
+.cta-banner {
+  max-width: var(--maxw); margin: 0 auto; text-align: center;
+  background: linear-gradient(135deg, var(--orange), #c8520f);
+  border-radius: calc(var(--radius) + 6px); padding: clamp(40px,6vw,68px) clamp(24px,4vw,48px);
+}
+.cta-banner h2 { font-family: 'Space Grotesk'; font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 700; letter-spacing: -.02em; }
+.cta-banner p { color: rgba(255,255,255,.92); margin: 14px auto 26px; max-width: 560px; font-size: 1.06rem; }
+.cta-banner .btn { background: #fff; color: var(--ink); }
+.cta-banner .btn:hover { background: var(--ink); color: #fff; }
+
+@media (max-width: 920px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .info-card { position: static; }
+}
+@media (max-width: 680px) {
+  .page-hero { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9vw), 0 100%); }
+}
+
 /* ------------------------------------------------------------ REVEAL ANIM */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
