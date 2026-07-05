@@ -416,3 +416,46 @@ main, .footer { position: relative; z-index: 1; }
   .hero { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9vw), 0 100%); }
   .slant-top { clip-path: polygon(0 7vw, 100% 0, 100% 100%, 0 100%); }
 }
+
+/* ------------------------------------------------------------ ACCORDION (diensten) */
+.accordion { border-top: 1px solid var(--line); }
+.acc-item { border-bottom: 1px solid var(--line); transition: background .3s var(--ease); }
+.acc-item.open { background: rgba(255,255,255,.02); }
+.acc-head {
+  width: 100%; display: flex; align-items: center; gap: clamp(14px,2vw,22px);
+  padding: clamp(20px,2.4vw,28px) clamp(8px,1.5vw,16px); background: none; border: 0;
+  cursor: pointer; text-align: left; color: var(--text); font-family: inherit;
+}
+.acc-num { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.05rem; color: rgba(255,255,255,.22); min-width: 30px; transition: color .3s; }
+.acc-item.open .acc-num { color: var(--orange); }
+.acc-icon-chip {
+  width: 48px; height: 48px; flex-shrink: 0; display: grid; place-items: center;
+  border-radius: 12px; background: rgba(242,106,27,.1); color: var(--orange);
+  border: 1px solid rgba(242,106,27,.22); transition: background .3s, color .3s;
+}
+.acc-icon-chip svg { width: 25px; height: 25px; }
+.acc-item.open .acc-icon-chip { background: var(--orange); color: #fff; border-color: transparent; }
+.acc-titles { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.acc-title { font-family: 'Space Grotesk'; font-weight: 600; font-size: clamp(1.12rem,2vw,1.5rem); letter-spacing: -.01em; line-height: 1.15; }
+.acc-sub { color: var(--muted); font-size: .95rem; }
+.acc-item.open .acc-sub { color: var(--orange-soft); }
+.acc-toggle {
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--line);
+  display: grid; place-items: center; color: var(--muted); transition: all .35s var(--ease);
+}
+.acc-toggle svg { width: 18px; height: 18px; }
+.acc-head:hover .acc-toggle { border-color: rgba(242,106,27,.5); color: var(--orange); }
+.acc-item.open .acc-toggle { background: var(--orange); border-color: var(--orange); color: #fff; transform: rotate(45deg); }
+.acc-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
+.acc-item.open .acc-body { grid-template-rows: 1fr; }
+.acc-body-inner { overflow: hidden; }
+.acc-content { padding: 0 clamp(8px,1.5vw,16px) 6px clamp(48px,6vw,100px); max-width: 900px; }
+.acc-content p { color: var(--muted); font-size: 1.04rem; margin-bottom: 16px; }
+.acc-link { display: inline-flex; align-items: center; gap: 8px; margin: 2px 0 26px; color: var(--orange); font-weight: 600; }
+.acc-link svg { transition: transform .25s var(--ease); }
+.acc-link:hover svg { transform: translateX(4px); }
+
+@media (max-width: 680px) {
+  .acc-icon-chip { display: none; }
+  .acc-content { padding-left: clamp(8px,4vw,16px); }
+}

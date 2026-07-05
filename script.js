@@ -37,6 +37,24 @@
   var track = document.querySelector('.marquee-track');
   if (track) track.innerHTML += track.innerHTML;
 
+  /* accordion (diensten) - single open at a time */
+  var accHeads = document.querySelectorAll('.acc-head');
+  accHeads.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.acc-item');
+      var willOpen = !item.classList.contains('open');
+      document.querySelectorAll('.acc-item.open').forEach(function (o) {
+        if (o !== item) {
+          o.classList.remove('open');
+          var h = o.querySelector('.acc-head');
+          if (h) h.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    });
+  });
+
   /* scroll reveal */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
